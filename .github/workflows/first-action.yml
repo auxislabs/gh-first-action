@@ -1,18 +1,19 @@
-name: First Action Workflow
-on: workflow_dispatch
+name: First workflow
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
 jobs:
-  first-job:
+  hello:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Greeting
-        run: echo "Hello world!"
-      - name: Print goodbye
-        run: echo "Done - bye!!"
-  second-job:
-    runs-on: macos-13
-    steps:
-      - name: Print Greeting in mac
-        run: echo "Hello world in MAC!"
-      - name: Print goodbye
-        run: echo "Done - bye in MAC!!"
-    
+      - name: Say hello
+        run: echo "Hello from GitHub Actions"
+
+      - name: Show runner information
+        run: |
+          echo "Operating system: $RUNNER_OS"
+          echo "Workspace: $GITHUB_WORKSPACE"
